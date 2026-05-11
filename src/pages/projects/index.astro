@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCardIcon from '../../components/ProjectCardIcon.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Projects — Jirka Schlesinger" description="Selected UX work in enterprise and AI-enabled products." path="/projects/">
+  <article>
+    <header class="stack-md editorial-intro">
+      <h1>Projects</h1>
+      <p class="muted">
+        High‑level summaries. Focus is on problem framing, decisions, and delivery — not visual polish.
+      </p>
+    </header>
+
+    <div class="project-index">
+      {
+        projects.map((p) => (
+          <article class="project-index-row">
+            <div class="project-index-row__glyph" aria-hidden="true">
+              <ProjectCardIcon slug={p.slug} />
+            </div>
+            <div class="project-index-row__body">
+              <h2 class="project-index-row__title">
+                <a href={`/projects/${p.slug}/`}>{p.data.title}</a>
+              </h2>
+              <ul class="meta-list project-index-meta">
+                <li>
+                  <span class="meta-label">Context · </span>
+                  {p.data.context}
+                </li>
+                <li>
+                  <span class="meta-label">Role · </span>
+                  {p.data.role}
+                </li>
+                <li>
+                  <span class="meta-label">Focus · </span>
+                  {p.data.focus}
+                </li>
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <p style="margin-top: var(--space-xl);">
+      <a href="/about/">About</a>
+      <span class="muted"> · </span>
+      <a href="/">Home</a>
+    </p>
+  </article>
+</BaseLayout>

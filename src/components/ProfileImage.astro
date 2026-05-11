@@ -1,0 +1,27 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  priority?: boolean;
+}
+
+const { size = 'md', priority = false } = Astro.props;
+
+const sizes = {
+  sm: { class: 'profile-photo--sm', width: 112, height: 112 },
+  md: { class: 'profile-photo--md', width: 160, height: 160 },
+  lg: { class: 'profile-photo--lg', width: 200, height: 200 },
+} as const;
+
+const cfg = sizes[size];
+---
+
+<img
+  src="/images/jiri-schlesinger.jpg"
+  alt="Jirka Schlesinger"
+  width={cfg.width}
+  height={cfg.height}
+  class:list={['profile-photo', cfg.class]}
+  loading={priority ? 'eager' : 'lazy'}
+  decoding="async"
+  fetchpriority={priority ? 'high' : undefined}
+/>

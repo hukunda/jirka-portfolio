@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProfileImage from '../components/ProfileImage.astro';
+import FeaturedProjectCard from '../components/FeaturedProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projectsSorted = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const featuredFallback = projectsSorted.slice(0, 3);
+---
+
+<BaseLayout
+  title="Jirka Schlesinger — UX Lead"
+  description="UX Lead focused on complex and AI-enabled products — enterprise delivery, consulting, and practical UX leadership."
+  path="/"
+>
+  <article class="stack-lg">
+    <header class="intro-block intro-block--split intro-hero">
+      <ProfileImage size="md" priority />
+      <div class="intro-hero__intro">
+        <h1>Jirka Schlesinger</h1>
+        <p class="role-tagline">UX Lead focused on Complex & AI‑Enabled Products</p>
+        <p class="role-detail">
+          Designing products and leading teams for real business impact — mostly in complex enterprise and consulting environments.
+        </p>
+      </div>
+    </header>
+
+    <div class="intro-hero__body">
+      <p class="lede">
+        I’ve spent enough time in corporate and consulting environments to know that most problems are not design problems — at least not at first.
+        More often, they’re alignment problems, expectation problems, or simply the result of too many reasonable ideas colliding at once. That’s usually
+        where I do my best work.
+      </p>
+      <p>
+        I’m comfortable working in ambiguity, with senior stakeholders, and in setups where budgets, governance, and delivery realities are part of the
+        design space. I value calm collaboration, clear reasoning, and solutions that still make sense once the project excitement fades.
+      </p>
+      <p>
+        I’m a designer with about twenty years in design and thirteen in UX — biased toward practical outcomes, rapid prototyping when it helps us
+        learn, and AI‑assisted workflows when they reduce friction instead of adding theater.
+      </p>
+      <p>
+        I work in UX because I enjoy making complex things understandable — and complexity tends to show up wherever many people, systems, and
+        priorities meet. I lead UX on digital and AI‑enabled products where requirements are “almost clear”, stakeholders are “mostly aligned”, and
+        timelines are “ambitious”. My role is usually to help teams move from uncertainty to something that holds together and can be built without
+        falling apart after the first release.
+      </p>
+      <p class="intro-closing">If you’re working on a complex product and things feel a bit fuzzy, I’m usually happy to talk.</p>
+    </div>
+
+    <section aria-labelledby="work-heading">
+      <h2 id="work-heading">What I work on</h2>
+      <p class="muted">
+        UX, product ownership, AI‑enabled experiences, and enterprise delivery — less about polishing screens, more about avoiding unnecessary chaos.
+      </p>
+      <ul>
+        <li>Leading UX across discovery, design, and delivery</li>
+        <li>Shaping product and platform UX in complex environments</li>
+        <li>Designing experiences for AI‑driven and data‑heavy tools</li>
+        <li>Turning vague ideas into concrete, defensible decisions</li>
+        <li>Working closely with product owners, engineers, data teams, and senior stakeholders</li>
+      </ul>
+      <p class="small">
+        Most of this happens in enterprise or regulated contexts, where “just redesign it” is rarely an option and pragmatism tends to win over
+        elegance.
+      </p>
+    </section>
+
+    <section aria-labelledby="selected-heading">
+      <h2 id="selected-heading">Selected work</h2>
+      <p class="muted">
+        Described at a high level. Details are intentionally abstracted due to NDAs; the structure reflects how I work in real delivery environments.
+      </p>
+      <p class="muted small featured-random-note">
+        Showing three projects — a random pick on each visit (JavaScript). Without JS, the first three in the catalogue appear.
+      </p>
+
+      <div class="featured-projects-row" id="featured-projects-row">
+        {
+          featuredFallback.map((p) => (
+            <FeaturedProjectCard slug={p.slug} title={p.data.title} focus={p.data.focus} />
+          ))
+        }
+      </div>
+
+      <div id="featured-projects-deck" class="featured-projects-deck" hidden aria-hidden="true">
+        {
+          projectsSorted.map((p) => (
+            <FeaturedProjectCard slug={p.slug} title={p.data.title} focus={p.data.focus} />
+          ))
+        }
+      </div>
+
+      <script is:inline>
+        (function () {
+          var deck = document.getElementById('featured-projects-deck');
+          var row = document.getElementById('featured-projects-row');
+          if (!deck || !row) return;
+          var nodes = deck.querySelectorAll('[data-featured-card]');
+          var cards = Array.prototype.slice.call(nodes);
+          for (var i = cards.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = cards[i];
+            cards[i] = cards[j];
+            cards[j] = tmp;
+          }
+          row.innerHTML = '';
+          var n = Math.min(3, cards.length);
+          for (var k = 0; k < n; k++) {
+            row.appendChild(cards[k].cloneNode(true));
+          }
+        })();
+      </script>
+
+      <p class="section-nav-links">
+        <a href="/projects/">View all projects</a>
+        <span class="muted"> · </span>
+        <a href="/about/">Background, approach & skills</a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>

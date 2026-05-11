@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCardIcon from '../../components/ProjectCardIcon.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('projects');
+  const sorted = [...entries].sort((a, b) => a.data.order - b.data.order);
+  return Promise.all(
+    sorted.map(async (project, i) => {
+      const { Content } = await project.render();
+      const prev = i > 0 ? sorted[i - 1] : null;
+      const next = i < sorted.length - 1 ? sorted[i + 1] : null;
+      return {
+        params: { slug: project.slug },
+        props: { project, Content, prev, next },
+      };
+    }),
+  );
+}
+
+const { project, Content, prev, next } = Astro.props;
+const { title, context, role, focus } = project.data;
+const description = `${title}. ${focus}`;
+---
+
+<BaseLayout title={`${title} — Jirka Schlesinger`} description={description} path={`/projects/${project.slug}/`}>
+  <article class="prose">
+    <header class="editorial-intro project-detail-header">
+      <div class="project-detail-header__row">
+        <div class="project-detail-header__glyph" aria-hidden="true">
+          <ProjectCardIcon slug={project.slug} />
+        </div>
+        <h1>{title}</h1>
+      </div>
+    </header>
+
+    <section aria-label="Summary">
+      <h2 class="visually-hidden">Context and role</h2>
+      <ul class="meta-list" style="color: var(--text); margin-bottom: var(--space-lg);">
+        <li>
+          <span class="meta-label">Context · </span>
+          {context}
+        </li>
+        <li>
+          <span class="meta-label">Role · </span>
+          {role}
+        </li>
+        <li>
+          <span class="meta-label">Focus · </span>
+          {focus}
+        </li>
+      </ul>
+    </section>
+
+    <div class="content-block">
+      <Content />
+    </div>
+
+    <nav class="project-pagination" aria-label="Other projects">
+      <div class="project-pagination__adjacent project-pagination__adjacent--prev">
+        {
+          prev ? (
+            <a href={`/projects/${prev.slug}/`} class="project-pagination__link">
+              <span class="project-pagination__label">Previous</span>
+              <span class="project-pagination__title">{prev.data.title}</span>
+            </a>
+          ) : (
+            <span class="project-pagination__placeholder" />
+          )
+        }
+      </div>
+      <a href="/projects/" class="project-pagination__index project-pagination__index-link">
+        <span class="project-pagination__label" aria-hidden="true">{'\u00a0'}</span>
+        <span class="project-pagination__index-text">All projects</span>
+      </a>
+      <div class="project-pagination__adjacent project-pagination__adjacent--next">
+        {
+          next ? (
+            <a href={`/projects/${next.slug}/`} class="project-pagination__link">
+              <span class="project-pagination__label">Next</span>
+              <span class="project-pagination__title">{next.data.title}</span>
+            </a>
+          ) : (
+            <span class="project-pagination__placeholder" />
+          )
+        }
+      </div>
+    </nav>
+
+    <p class="project-detail-footer-links">
+      <a href="/">Home</a>
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

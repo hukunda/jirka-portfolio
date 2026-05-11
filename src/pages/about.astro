@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About — Jirka Schlesinger"
+  description="Background, how I approach UX work, and skills — complementary detail to the overview on the home page."
+  path="/about/"
+>
+  <article class="prose about-page">
+    <header class="about-page__hero">
+      <h1 class="about-page__title">About</h1>
+      <p class="role-tagline">UX Lead focused on Complex & AI‑Enabled Products</p>
+      <p class="about-crosslink">
+        How I think day-to-day and who I am as a practitioner is on the <a href="/">home page</a>. This page adds career background, personal context,
+        how I approach UX, and a structured skills map — without repeating that narrative.
+      </p>
+    </header>
+
+    <section class="about-page__section" aria-labelledby="background-heading">
+      <div class="about-section-intro">
+        <h2 id="background-heading">Background</h2>
+        <p class="muted small section-lede">
+          Earlier training and roles before the current UX leadership work — same bias toward clarity, craft, and delivery constraints.
+        </p>
+      </div>
+
+      <div class="about-panels">
+        <div class="about-panel">
+          <h3>Education</h3>
+          <p>
+            Graphic School Prague — polygraphy track, 2000–2004 (graduated 2004). Production-minded foundations: preparing work for print, typography and
+            layout, image treatment, print production, and finishing — useful whenever design still has to survive a physical or vendor handoff.
+          </p>
+        </div>
+
+        <div class="about-panel">
+          <h3>Senior graphic designer — Dynamic Broadcast</h3>
+          <p class="muted small about-panel__meta">Prague · May 2013 – December 2015</p>
+          <p>
+            I was the sole in-house designer in a small broadcast technology company. The job mixed client-facing work with our own product and marketing
+            needs: branding and refreshes, web UI, and interfaces for video products used internationally — not “pretty screens”, but flows that had to work
+            under real commercial pressure.
+          </p>
+          <p>
+            Scope also covered internal and outbound communications: print (business cards through exhibition graphics), sales and technical PDFs, email
+            templates, and day-to-day ownership of how we showed up visually on social channels so the message matched the product story.
+          </p>
+          <p>
+            Representative output included the vuMedia / MediaLounge OTT front end, Visual Unity product and corporate touchpoints, Dynamic Broadcast’s own
+            identity and web presence, and mobile and TV apps (Android TV, iOS, Android) — logos through to shipped UI. Details age quickly; ask if you want
+            context on what survived and what I’d do differently today.
+          </p>
+        </div>
+
+        <div class="about-panel">
+          <h3>Volunteering — TEDxPrague</h3>
+          <p class="muted small about-panel__meta">Prague · May 2015 · TEDxPragueWomen</p>
+          <p>
+            TEDxPrague invited me to help with graphics for TEDxPragueWomen: event programme, name badges, business cards, and presentation slides.
+            Illustration by Tomski & Polanski — thanks to them and to the TEDxPrague team for the collaboration.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-page__section" aria-labelledby="life-heading">
+      <h2 id="life-heading">Outside the desk</h2>
+      <ul class="life-bits life-bits--chips">
+        <li>Father of two</li>
+        <li>Dog owner — Tara, adopted from a shelter</li>
+        <li>Campervan traveler when schedules allow</li>
+        <li>Black metal and noise — in moderation</li>
+        <li>Canoeing when there’s water worth paddling</li>
+      </ul>
+    </section>
+
+    <section class="about-page__section about-page__section--approach" aria-labelledby="approach-heading">
+      <h2 id="approach-heading">How I approach UX work</h2>
+      <div class="about-panel about-panel--approach">
+        <p>I don’t see UX as producing deliverables, frameworks, or perfectly aligned decks.</p>
+        <p>I see it as helping people make better decisions when:</p>
+        <ul class="about-approach-list">
+          <li>the problem isn’t fully clear</li>
+          <li>time is limited</li>
+          <li>constraints are real</li>
+          <li>and “we’ll figure it out later” isn’t a great strategy</li>
+        </ul>
+        <p>
+          In practice, this means slowing down early, asking inconvenient questions, and making assumptions and trade‑offs explicit. That becomes especially
+          important with AI‑enabled systems, where usability is closely tied to trust and transparency.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="skills-heading" class="skill-grid about-page__section about-page__section--skills">
+      <div class="about-section-intro">
+        <h2 id="skills-heading">Skills & focus areas</h2>
+        <p class="muted small skills-intro">
+          Grouped for scanning — not a checklist of buzzwords. Ask me how these showed up on a specific engagement.
+        </p>
+      </div>
+
+      <div class="skills-matrix">
+        <div class="skill-group">
+          <h3>UX, product & ownership</h3>
+          <ul>
+            <li>UX leadership</li>
+            <li>End‑to‑end UX ownership</li>
+            <li>Product design</li>
+            <li>Problem framing</li>
+            <li>Interaction design</li>
+            <li>Service design</li>
+            <li>Design direction & review</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3>Discovery, research & decisions</h3>
+          <ul>
+            <li>User research (qualitative)</li>
+            <li>Discovery in ambiguous problem spaces</li>
+            <li>Insight synthesis toward decisions</li>
+            <li>Assumption mapping & validation</li>
+            <li>Workshop facilitation</li>
+            <li>Decision framing</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3>AI & data‑heavy UX</h3>
+          <ul>
+            <li>AI UX design</li>
+            <li>UX for AI‑enabled systems</li>
+            <li>Responsible & trustworthy UX</li>
+            <li>Explainability & transparency</li>
+            <li>Data‑heavy & document‑intelligence experiences</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3>Enterprise, consulting & delivery</h3>
+          <ul>
+            <li>Stakeholder management</li>
+            <li>Enterprise & regulated environments</li>
+            <li>Pragmatic UX strategy</li>
+            <li>Delivery‑aware design</li>
+            <li>Scope definition & shaping</li>
+            <li>UX upselling & positioning</li>
+            <li>Cross‑functional collaboration</li>
+          </ul>
+        </div>
+
+        <div class="skill-group skill-group--full">
+          <h3>Leadership & meta</h3>
+          <ul>
+            <li>Working in ambiguity without improvising clarity away</li>
+            <li>Explaining UX to non‑UX audiences</li>
+            <li>Making trade‑offs explicit before they become surprises</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <p class="about-page__footer-nav">
+      <a href="/projects/">Projects</a>
+      <span class="muted"> · </span>
+      <a href="/">Home</a>
+    </p>
+  </article>
+</BaseLayout>
