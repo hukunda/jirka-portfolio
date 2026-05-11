@@ -1,5 +1,5 @@
 ---
-title: AI Driven Annotation
+title: Document Intelligence Platform
 context: Enterprise, data‑heavy tools using AI to support document processing, annotation, and information extraction.
 role: UX Lead working closely with product owners, data scientists, and engineering teams.
 focus: Trust and comprehension in expert workflows — separating intent, suggestions, and user decisions.

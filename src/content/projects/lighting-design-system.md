@@ -1,5 +1,5 @@
 ---
-title: Appkit (our design system)
+title: Organisation-Wide Design System
 context: Organisation‑wide design system — Figma libraries, Storybook, and alignment with platform standards across many internal products.
 role: UX / design lead within a blended researcher–designer setup embedded with engineering.
 focus: Consistency, accessibility, and velocity — fewer one‑off screens, clearer handoff, measurable gains for teams shipping real software.

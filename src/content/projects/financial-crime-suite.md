@@ -1,5 +1,5 @@
 ---
-title: Financial Crime Suite
+title: Operational Risk Monitoring Suite
 context: Data‑driven AML transaction monitoring — complex operational data, ML‑assisted signals, and severe consequences when signals are missed or mishandled.
 role: UX Lead — discovery through delivery support; wireframes to high‑fidelity prototypes aligned with engineering constraints.
 focus: Making dense, sensitive monitoring data navigable — clarity under operational pressure and regulatory scrutiny.

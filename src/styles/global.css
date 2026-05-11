@@ -19,6 +19,7 @@
   --space-xl: 3rem;
   --space-2xl: 4.5rem;
   --section-rule: var(--border);
+  --project-card-hover-bg: rgba(37, 99, 235, 0.03);
 }
 
 *,
@@ -294,14 +295,14 @@ article.prose > section + section > h2:first-child {
 }
 
 .project-spotlight:hover {
-  background: rgba(37, 99, 235, 0.03);
+  background: var(--project-card-hover-bg);
 }
 
 .project-spotlight__title {
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.5;
   letter-spacing: -0.02em;
 }
 
@@ -315,16 +316,17 @@ article.prose > section + section > h2:first-child {
 }
 
 .project-spotlight__summary {
-  margin: 0;
+  margin: var(--space-xs) 0 0;
   font-size: 0.875rem;
-  line-height: 1.55;
+  line-height: 1.72;
   color: var(--muted);
 }
 
-/* Projects index — full‑width rows, no floating boxes */
+/* Projects index — scannable cards, labeled fields */
 .project-index {
   display: flex;
   flex-direction: column;
+  gap: var(--space-md);
 }
 
 .project-index-row {
@@ -332,21 +334,25 @@ article.prose > section + section > h2:first-child {
   grid-template-columns: auto 1fr;
   gap: var(--space-lg);
   align-items: start;
-  padding: var(--space-xl) 0;
-  border-bottom: 1px solid var(--border);
+  padding: var(--space-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(15, 20, 36, 0.04);
   font-family: var(--font-sans);
+  transition: background-color 0.15s ease;
 }
 
-.project-index-row:first-child {
-  border-top: 1px solid var(--border);
+.project-index-row:hover {
+  background: var(--project-card-hover-bg);
 }
 
 .project-index-row__title {
   margin: 0 0 var(--space-sm);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.25;
+  line-height: 1.3;
 }
 
 .project-index-row__title a {
@@ -358,10 +364,17 @@ article.prose > section + section > h2:first-child {
   color: var(--link);
 }
 
-.project-index-meta {
-  margin-top: 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
+.project-index-row__summary {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.62;
+  color: var(--muted);
+  max-width: 40rem;
+}
+
+.project-index-footer-nav {
+  margin-top: var(--space-xl);
+  font-size: 0.9375rem;
 }
 
 /* Shared icon tile */
@@ -442,8 +455,8 @@ article.prose > section + section > h2:first-child {
 }
 
 .project-pagination__link:hover .project-pagination__title {
-  text-decoration: underline;
-  text-decoration-color: var(--link);
+  color: var(--link);
+  text-decoration: none;
 }
 
 .project-pagination__label {
@@ -455,9 +468,11 @@ article.prose > section + section > h2:first-child {
 }
 
 .project-pagination__title {
-  color: var(--link);
-  font-weight: 500;
+  color: var(--text);
+  font-weight: 600;
   line-height: 1.35;
+  letter-spacing: -0.02em;
+  transition: color 0.15s ease;
 }
 
 .project-pagination__adjacent--next .project-pagination__link {
@@ -490,8 +505,8 @@ article.prose > section + section > h2:first-child {
 }
 
 .project-pagination__index-link:hover .project-pagination__index-text {
-  text-decoration: underline;
-  text-decoration-color: var(--link);
+  color: var(--link-hover);
+  text-decoration: none;
 }
 
 .project-pagination__index .project-pagination__label {
@@ -584,6 +599,23 @@ article.prose > section + section > h2:first-child {
   color: inherit;
 }
 
+.site-colophon {
+  margin: var(--space-sm) 0 0;
+  max-width: 42rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.site-colophon a {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.site-colophon a:hover {
+  color: var(--link);
+}
+
 .profile-photo {
   display: block;
   border-radius: 14px;
@@ -653,17 +685,6 @@ article.prose > section + section > h2:first-child {
   color: var(--muted);
 }
 
-.about-crosslink {
-  margin-top: var(--space-sm);
-  font-size: 0.9375rem;
-  line-height: 1.55;
-  max-width: 36rem;
-}
-
-.about-crosslink a {
-  font-weight: 500;
-}
-
 /* About page — text-first layout, panels for scanning */
 .about-page__hero {
   margin-bottom: var(--space-2xl);
@@ -672,19 +693,14 @@ article.prose > section + section > h2:first-child {
   max-width: 42rem;
 }
 
+.about-page__hero .role-tagline {
+  margin-bottom: 0;
+}
+
 .about-page__title {
   margin-top: 0;
   margin-bottom: var(--space-sm);
   font-size: clamp(1.85rem, 4vw, 2.45rem);
-}
-
-.about-page .about-crosslink {
-  margin-top: var(--space-md);
-  margin-bottom: 0;
-  font-size: 1rem;
-  line-height: 1.68;
-  color: var(--muted);
-  max-width: 38rem;
 }
 
 .about-page.prose > section {
@@ -747,12 +763,7 @@ article.prose > section + section > h2:first-child {
   margin-bottom: var(--space-sm) !important;
 }
 
-.about-panel--approach {
-  border-left: 3px solid var(--link);
-  padding-left: calc(var(--space-lg) - 3px);
-}
-
-.about-panel--approach p:last-child {
+.about-panel > :last-child {
   margin-bottom: 0;
 }
 
@@ -763,6 +774,10 @@ article.prose > section + section > h2:first-child {
 }
 
 .about-page__section--approach h2 {
+  margin-top: 0;
+}
+
+.about-page__section--life h2 {
   margin-top: 0;
 }
 

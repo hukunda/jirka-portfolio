@@ -1,5 +1,5 @@
 ---
-title: AI@PwC
+title: Internal AI Capability Catalogue
 context: Internal-facing catalogue of AI tools and services — helping teams find and adopt the right capability instead of guessing from a growing catalogue.
 role: UX Lead — discovery, IA, prototyping, and iteration with product and engineering.
 focus: Findability and clarity across many tools — navigation, search, and how people understand what each offering actually does.

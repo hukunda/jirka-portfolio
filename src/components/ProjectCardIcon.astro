@@ -9,7 +9,7 @@ interface Props {
 const { slug } = Astro.props;
 
 const knownSlugs = new Set([
-  'welcome',
+  'enterprise-tax-workflow',
   'responsible-ai-toolkit',
   'ai-document-data-platforms',
   'enterprise-digital-products',
@@ -26,7 +26,7 @@ const knownSlugs = new Set([
 
 <span class="project-card__icon" aria-hidden="true">
   {
-    slug === 'welcome' && (
+    slug === 'enterprise-tax-workflow' && (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M6 11 L10 7 L14 11" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" />
         <path d="M4 16.5 H16 V9.5 H10 V16.5 H4 Z" stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" />

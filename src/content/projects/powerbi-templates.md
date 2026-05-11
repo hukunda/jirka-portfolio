@@ -1,6 +1,6 @@
 ---
-title: PowerBI Templates
-context: Enterprise reporting — reusable Power BI patterns for leadership and operational views, with guardrails so numbers stay comparable across teams.
+title: Executive Reporting Templates
+context: Enterprise reporting — reusable embedded analytics layouts for leadership and operational views, with guardrails so numbers stay comparable across teams.
 role: UX Lead — template structure, layout standards, and how people move from high-level views to defensible detail.
 focus: Clarity of measures, consistent navigation between report families, and reducing “custom every time” without killing local needs.
 order: 12

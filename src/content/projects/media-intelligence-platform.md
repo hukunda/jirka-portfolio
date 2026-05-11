@@ -1,5 +1,5 @@
 ---
-title: Global Network Sharing Tool
+title: Integrated Analytics Workspace
 context: Cross-team operational analytics — merging heterogeneous signals for planning, forecasting, and day-to-day coordination.
 role: UX Lead — workshops, research cycles, hands‑on UI design aligned with the shared design system (Figma migration, component governance).
 focus: Making heterogeneous datasets legible — filtering, comparisons, and visual consistency without drowning users in dashboards.
@@ -14,7 +14,7 @@ Stakeholders needed a coherent view across channels and sources where definition
 
 - Design‑thinking workshops to align sprint topics with measurable decisions (not generic discovery theatre)
 - Strong emphasis on **filtering logic** and visual hierarchy so dense views stayed navigable
-- Migration discipline to **Figma + AppKit** patterns — fewer bespoke widgets, more repeatable patterns across dashboards
+- Migration discipline to **shared design-system components** — fewer bespoke widgets, more repeatable patterns across dashboards
 
 ## Outcome
 

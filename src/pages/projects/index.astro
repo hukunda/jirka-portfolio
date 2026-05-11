@@ -6,12 +6,16 @@ import { getCollection } from 'astro:content';
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout title="Projects — Jirka Schlesinger" description="Selected UX work in enterprise and AI-enabled products." path="/projects/">
+<BaseLayout
+  title="Projects — Jirka Schlesinger"
+  description="UX case snapshots — enterprise, AI-enabled products, and delivery-focused leadership."
+  path="/projects/"
+>
   <article>
     <header class="stack-md editorial-intro">
       <h1>Projects</h1>
       <p class="muted">
-        High‑level summaries. Focus is on problem framing, decisions, and delivery — not visual polish.
+        Short snapshots for recruiters and hiring managers — each case page has more depth if you need it.
       </p>
     </header>
 
@@ -26,27 +30,14 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
               <h2 class="project-index-row__title">
                 <a href={`/projects/${p.slug}/`}>{p.data.title}</a>
               </h2>
-              <ul class="meta-list project-index-meta">
-                <li>
-                  <span class="meta-label">Context · </span>
-                  {p.data.context}
-                </li>
-                <li>
-                  <span class="meta-label">Role · </span>
-                  {p.data.role}
-                </li>
-                <li>
-                  <span class="meta-label">Focus · </span>
-                  {p.data.focus}
-                </li>
-              </ul>
+              <p class="project-index-row__summary">{p.data.focus}</p>
             </div>
           </article>
         ))
       }
     </div>
 
-    <p style="margin-top: var(--space-xl);">
+    <p class="project-index-footer-nav">
       <a href="/about/">About</a>
       <span class="muted"> · </span>
       <a href="/">Home</a>

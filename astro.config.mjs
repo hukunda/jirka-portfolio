@@ -1,6 +1,11 @@
 import { defineConfig } from 'astro/config';
 
-// Set PUBLIC_SITE_URL in your host (e.g. Vercel env) to your real domain for correct canonical URLs & sitemap.
+// Canonical URLs: set PUBLIC_SITE_URL on any host, or rely on VERCEL_URL during Vercel builds.
+const siteUrl =
+  process.env.PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ||
+  'https://example.com';
+
 export default defineConfig({
-  site: process.env.PUBLIC_SITE_URL || 'https://example.com',
+  site: siteUrl,
 });

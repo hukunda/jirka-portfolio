@@ -1,5 +1,5 @@
 ---
-title: National Quality Organization Tool
+title: Collaborative Assurance Portal
 context: Secure online service for audit reviews — shared documentation, structured communication, and a single place for audit teams and clients to align.
 role: UX designer — high‑fidelity prototyping with the internal design system; ongoing refinement with user testing.
 focus: Complex roles, accessibility, and trustworthy “single source of truth” UX — supported by strong onboarding and help content.
