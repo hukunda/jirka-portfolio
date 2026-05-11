@@ -8,37 +8,35 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 
 <BaseLayout
   title="Projects — Jirka Schlesinger"
-  description="UX case snapshots — enterprise, AI-enabled products, and delivery-focused leadership."
+  description="UX case snapshots from ten years at PwC — enterprise and AI-enabled products, with delivery-focused leadership."
   path="/projects/"
 >
   <article>
     <header class="stack-md editorial-intro">
       <h1>Projects</h1>
       <p class="muted">
-        Short snapshots for recruiters and hiring managers — each case page has more depth if you need it.
+        Case snapshots from my ten years leading UX at PwC. Each page goes deeper; details are summarized where confidentiality requires it.
       </p>
     </header>
 
     <div class="project-index">
       {
         projects.map((p) => (
-          <article class="project-index-row">
+          <a class="project-index-row" href={`/projects/${p.slug}/`}>
             <div class="project-index-row__glyph" aria-hidden="true">
               <ProjectCardIcon slug={p.slug} />
             </div>
             <div class="project-index-row__body">
-              <h2 class="project-index-row__title">
-                <a href={`/projects/${p.slug}/`}>{p.data.title}</a>
-              </h2>
+              <h2 class="project-index-row__title">{p.data.title}</h2>
               <p class="project-index-row__summary">{p.data.focus}</p>
             </div>
-          </article>
+          </a>
         ))
       }
     </div>
 
     <p class="project-index-footer-nav">
-      <a href="/about/">About</a>
+      <a href="/about/">Background & approach</a>
       <span class="muted"> · </span>
       <a href="/">Home</a>
     </p>

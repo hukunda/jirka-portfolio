@@ -1,0 +1,21 @@
+---
+const email = 'jiri.schlesinger@gmail.com';
+const phone = '+420735729761';
+const phoneDisplay = '+420 735 729 761';
+const cvHref = '/downloads/cv-jiri-schlesinger-ux.pdf';
+const cvFileName = 'CV-Jiri-Schlesinger-UX.pdf';
+---
+
+<section class="talk-to-me" id="talk" aria-labelledby="talk-heading">
+  <h2 id="talk-heading" class="talk-to-me__title">Talk to me</h2>
+  <p class="talk-to-me__lede">
+    If you would like to discuss a role, project, or collaboration, reach me directly or download my CV.
+  </p>
+  <div class="talk-to-me__actions">
+    <a class="talk-to-me__action" href={`mailto:${email}`}>Email</a>
+    <a class="talk-to-me__action" href={`tel:${phone}`}>Call {phoneDisplay}</a>
+    <a class="talk-to-me__action talk-to-me__action--secondary" href={cvHref} download={cvFileName}>
+      Download CV
+    </a>
+  </div>
+</section>

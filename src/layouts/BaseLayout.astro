@@ -1,18 +1,40 @@
 ---
 import '../styles/global.css';
+import KeyboardShortcuts from '../components/KeyboardShortcuts.astro';
+import TalkToMe from '../components/TalkToMe.astro';
 
 interface Props {
   title: string;
   description?: string;
   path?: string;
+  projectPrev?: string;
+  projectNext?: string;
 }
 
 const {
   title,
-  description = 'UX Lead focused on complex and AI-enabled products — enterprise delivery and practical UX leadership.',
+  description = 'UX Lead at PwC focused on complex and AI-enabled products — enterprise delivery, consulting, and practical UX leadership.',
   path = '/',
+  projectPrev,
+  projectNext,
 } = Astro.props;
 const canonical = new URL(path, Astro.site ?? 'https://example.com').href;
+const pageType =
+  path === '/'
+    ? 'home'
+    : path.startsWith('/about')
+      ? 'about'
+      : path === '/projects/'
+        ? 'projects-index'
+        : path.startsWith('/projects/')
+          ? 'project-detail'
+          : 'page';
+const keyboardVariant =
+  pageType === 'project-detail'
+    ? 'project-detail'
+    : pageType === 'projects-index'
+      ? 'projects-index'
+      : 'global';
 ---
 
 <!DOCTYPE html>
@@ -31,16 +53,28 @@ const canonical = new URL(path, Astro.site ?? 'https://example.com').href;
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body
+    data-page={pageType}
+    data-project-prev={projectPrev}
+    data-project-next={projectNext}
+  >
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="wrap">
         <p class="site-title">
-          <a href="/">Jirka Schlesinger</a>
+          <a href="/" aria-keyshortcuts="H">Jirka Schlesinger</a>
         </p>
         <nav class="nav" aria-label="Primary">
-          <a href="/projects/" aria-current={path.startsWith('/projects') ? 'page' : undefined}>Projects</a>
-          <a href="/about/" aria-current={path.startsWith('/about') ? 'page' : undefined}>About</a>
+          <a
+            href="/projects/"
+            aria-current={path.startsWith('/projects') ? 'page' : undefined}
+            aria-keyshortcuts="P"
+          >Projects</a>
+          <a
+            href="/about/"
+            aria-current={path.startsWith('/about') ? 'page' : undefined}
+            aria-keyshortcuts="B"
+          >Background</a>
         </nav>
       </div>
     </header>
@@ -48,21 +82,21 @@ const canonical = new URL(path, Astro.site ?? 'https://example.com').href;
       <slot />
     </main>
     <footer class="wrap site-footer">
-      <p class="contact-line">
-        <span class="muted">Contact · </span>
-        <a href="mailto:jiri.schlesinger@gmail.com">jiri.schlesinger@gmail.com</a>
-        <span aria-hidden="true"> · </span>
-        <a href="tel:+420735729761">+420 735 729 761</a>
-        <span aria-hidden="true"> · </span>
+      <TalkToMe />
+      <p class="contact-line contact-line--secondary">
         <a href="https://www.linkedin.com/in/jirkaschlesinger/">LinkedIn</a>
       </p>
+      <details class="keyboard-help-toggle">
+        <summary>Keyboard shortcuts</summary>
+        <KeyboardShortcuts variant={keyboardVariant} compact />
+      </details>
       <p class="site-colophon">
         <span class="muted">Built with </span>
         <a href="https://astro.build/">Astro</a>
-        <span class="muted">
-          · Maintained in Cursor — iteration, refactors, and content with an AI-assisted workflow I use day to day.
-        </span>
       </p>
     </footer>
+    <script>
+      import '../scripts/keyboard-shortcuts.ts';
+    </script>
   </body>
 </html>
