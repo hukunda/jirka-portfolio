@@ -1,5 +1,5 @@
 ---
-title: Integrated Analytics Workspace
+title: Cross-team analytics workspace
 context: Cross-team operational analytics — merging heterogeneous signals for planning, forecasting, and day-to-day coordination.
 role: UX Lead — workshops, research cycles, hands‑on UI design aligned with the shared design system (Figma migration, component governance).
 focus: Making heterogeneous datasets legible — filtering, comparisons, and visual consistency without drowning users in dashboards.

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { lifeBits } from '../lib/life-bits';
 ---
 
 <BaseLayout
@@ -10,7 +11,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <article class="prose about-page">
     <header class="about-page__hero">
       <h1 class="about-page__title">Background & approach</h1>
-      <p class="role-tagline">UX Lead focused on Complex & AI‑Enabled Products</p>
       <p class="role-detail">PwC · Prague</p>
     </header>
 
@@ -88,24 +88,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <li>Cross‑functional collaboration</li>
           </ul>
         </div>
-
-        <div class="skill-group skill-group--full">
-          <h3>Leadership & meta</h3>
-          <ul>
-            <li>Working in ambiguity while keeping priorities clear</li>
-            <li>Explaining UX to non‑UX audiences</li>
-            <li>Making trade‑offs explicit early</li>
-          </ul>
-        </div>
       </div>
     </section>
 
     <section class="about-page__section" aria-labelledby="background-heading">
       <div class="about-section-intro">
         <h2 id="background-heading">Current role & background</h2>
-        <p class="muted small section-lede">
-          Day to day at PwC; formal visual-design foundations and in-house work before this UX leadership focus — same through-line of clarity, craft, and what actually ships.
-        </p>
       </div>
 
       <div class="about-panels">
@@ -161,11 +149,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="about-page__section about-page__section--life" aria-labelledby="life-heading">
       <h2 id="life-heading">Outside work</h2>
       <ul class="life-bits life-bits--chips">
-        <li>Father of two</li>
-        <li>Dog owner — Tara, adopted from a shelter</li>
-        <li>Campervan traveler when schedules allow</li>
-        <li>Black metal and noise</li>
-        <li>Canoeing when the weather cooperates</li>
+        {
+          lifeBits.map((bit) => (
+            <li>
+              <span class="life-bits__icon" aria-hidden="true" set:html={bit.icon} />
+              {bit.label}
+            </li>
+          ))
+        }
       </ul>
     </section>
 

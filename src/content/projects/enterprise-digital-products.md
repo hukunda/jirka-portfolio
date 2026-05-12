@@ -1,5 +1,5 @@
 ---
-title: Enterprise Application Portfolio
+title: Long-lived enterprise products
 context: Large‑scale internal and client‑facing digital products with long lifecycles and many stakeholders.
 role: UX Lead / Senior Designer across discovery and delivery phases.
 focus: Alignment, consistency, and decisions that survive turnover — not one‑off hero flows.

@@ -1,5 +1,5 @@
 ---
-title: Multi-State Compliance Programme
+title: Reimagined state tax returns
 context: Enterprise tax domain — state return preparation alongside a large partnership tax reporting stack used for multi-tier structures and K‑1 compliance.
 role: UX Lead — discovery through interaction patterns for standardized workflows, diagnostics-oriented reporting, and complex fund structures (including Fund of Funds and Private Equity).
 focus: Reimagining state return preparation UX — automation narratives, deviation surfacing, and complex fund scenarios without losing auditability or traceability.

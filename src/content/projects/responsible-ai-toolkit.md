@@ -1,5 +1,5 @@
 ---
-title: Governed AI Operations Framework
+title: Responsible AI operations
 context: Internal enterprise platform supporting teams working with AI systems in regulated and risk‑sensitive environments.
 role: UX Lead responsible for problem framing, UX direction, design decisions, and stakeholder alignment across multiple streams.
 focus: Reasoning about risk and responsibility — clarity, transparency, and human accountability rather than feature volume.

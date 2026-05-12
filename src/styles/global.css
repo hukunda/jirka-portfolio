@@ -8,9 +8,9 @@
   --text: #0f1419;
   --muted: #536471;
   --faint: #5c6b78;
-  --border: #e1e8ed;
-  --link: #4b6476;
-  --link-hover: #3f5566;
+  --border: #dce6e8;
+  --link: #428287;
+  --link-hover: #35696d;
   --measure: 42rem;
   --text-base: 1rem;
   --text-sm: 0.875rem;
@@ -21,7 +21,7 @@
   --space-lg: 2rem;
   --space-xl: 3rem;
   --space-2xl: 4.5rem;
-  --project-card-hover-bg: rgba(75, 100, 118, 0.06);
+  --project-card-hover-bg: rgba(106, 184, 188, 0.07);
 }
 
 *,
@@ -1000,6 +1000,9 @@ article.prose > section + section > h2:first-child {
 }
 
 .life-bits--chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   margin: 0;
   padding: 0.4rem 0.85rem;
   background: var(--surface);
@@ -1009,6 +1012,18 @@ article.prose > section + section > h2:first-child {
   font-size: var(--text-sm);
   color: var(--text);
   line-height: 1.35;
+}
+
+.life-bits__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.life-bits__icon svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
 }
 
 .about-page__footer-nav {

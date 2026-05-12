@@ -1,5 +1,5 @@
 ---
-title: Identity Governance Programme
+title: Identity and access workflows
 context: Identity and access management adoption — onboarding, workflows, and monitoring so organisations could implement IAM without turning it into an administrative maze.
 role: UX Lead — clickable prototypes through progressively richer MVPs; tight loops with product and engineering.
 focus: Reducing coordination overhead while keeping sensitive access decisions understandable and auditable.

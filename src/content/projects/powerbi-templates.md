@@ -1,5 +1,5 @@
 ---
-title: Executive Reporting Templates
+title: Standardised executive reports
 context: Enterprise reporting — reusable embedded analytics layouts for leadership and operational views, with guardrails so numbers stay comparable across teams.
 role: UX Lead — template structure, layout standards, and how people move from high-level views to defensible detail.
 focus: Clarity of measures, consistent navigation between report families, and reducing “custom every time” without killing local needs.

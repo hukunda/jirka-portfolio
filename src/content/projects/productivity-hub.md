@@ -1,5 +1,5 @@
 ---
-title: Delivery Portfolio Hub
+title: Programme management hub
 context: Internal web and iOS product — from project‑management visualisation into a broader programme‑management capability used by delivery teams.
 role: UX Lead — research through prototyping; alignment with product owners and engineering.
 focus: Turning operational reporting into something teams could actually steer work with — navigation, clarity of status, and scalable IA as scope grew.
