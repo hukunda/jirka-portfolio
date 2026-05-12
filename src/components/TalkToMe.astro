@@ -6,14 +6,18 @@ const cvHref = '/downloads/cv-jiri-schlesinger-ux.pdf';
 const cvFileName = 'CV-Jiri-Schlesinger-UX.pdf';
 ---
 
-<section class="talk-to-me" id="talk" aria-labelledby="talk-heading">
-  <h2 id="talk-heading" class="talk-to-me__title">Let’s start with a coffee.</h2>
-  <p class="talk-to-me__lede">The rest usually follows.</p>
-  <div class="talk-to-me__actions">
-    <a class="talk-to-me__action" href={`mailto:${email}`}>Email</a>
-    <a class="talk-to-me__action" href={`tel:${phone}`}>Call {phoneDisplay}</a>
-    <a class="talk-to-me__action talk-to-me__action--secondary" href={cvHref} download={cvFileName}>
-      Download CV
-    </a>
+<section class="talk-to-me talk-to-me--band" id="talk" aria-labelledby="talk-heading">
+  <div class="talk-to-me__inner">
+    <div class="talk-to-me__copy">
+      <h2 id="talk-heading" class="talk-to-me__title">Let’s start with a coffee.</h2>
+      <p class="talk-to-me__lede">The rest usually follows.</p>
+    </div>
+    <div class="talk-to-me__actions">
+      <a class="talk-to-me__action" href={`mailto:${email}`}>Email</a>
+      <a class="talk-to-me__action" href={`tel:${phone}`}>Call {phoneDisplay}</a>
+      <a class="talk-to-me__action talk-to-me__action--secondary" href={cvHref} download={cvFileName}>
+        Download CV
+      </a>
+    </div>
   </div>
 </section>

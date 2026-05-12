@@ -5,12 +5,13 @@ interface Props {
   slug: string;
   title: string;
   focus: string;
+  variant?: 'feature' | 'standard';
 }
 
-const { slug, title, focus } = Astro.props;
+const { slug, title, focus, variant = 'standard' } = Astro.props;
 ---
 
-<article class="project-spotlight" data-featured-card>
+<article class:list={['project-spotlight', variant === 'feature' && 'project-spotlight--feature']} data-featured-card>
   <a class="project-spotlight__link" href={`/projects/${slug}/`}>
     <div class="project-spotlight__glyph" aria-hidden="true">
       <ProjectCardIcon slug={slug} />

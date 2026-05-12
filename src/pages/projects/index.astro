@@ -2,8 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCardIcon from '../../components/ProjectCardIcon.astro';
 import { getCollection } from 'astro:content';
+import { getProjectTopics, projectTopics } from '../../lib/project-topics';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const filterKeys = Object.keys(projectTopics) as Array<keyof typeof projectTopics>;
 ---
 
 <BaseLayout
@@ -11,18 +13,34 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   description="UX case snapshots from PwC — enterprise and AI-enabled products from design through leadership."
   path="/projects/"
 >
-  <article>
-    <header class="stack-md editorial-intro">
-      <h1>Projects</h1>
-      <p class="muted">
-        Case snapshots from discovery through delivery. Details are summarized where confidentiality requires it.
+  <article class="projects-page">
+    <header class="page-intro">
+      <p class="page-intro__label">Projects</p>
+      <h1>Case snapshots</h1>
+      <p class="page-intro__lede">
+        Discovery through delivery in enterprise and AI-enabled work. Details are summarized where confidentiality requires it.
       </p>
     </header>
 
-    <div class="project-index">
+    <div class="project-filters" role="toolbar" aria-label="Filter projects by topic">
+      <button class="project-filters__button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+      {
+        filterKeys.map((key) => (
+          <button class="project-filters__button" type="button" data-filter={key} aria-pressed="false">
+            {projectTopics[key]}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="project-index" id="project-index">
       {
         projects.map((p) => (
-          <a class="project-index-row" href={`/projects/${p.slug}/`}>
+          <a
+            class="project-index-row"
+            href={`/projects/${p.slug}/`}
+            data-topics={getProjectTopics(p.slug).join(' ')}
+          >
             <div class="project-index-row__glyph" aria-hidden="true">
               <ProjectCardIcon slug={p.slug} />
             </div>
@@ -34,6 +52,10 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
         ))
       }
     </div>
+
+    <script>
+      import '../../scripts/project-filters.ts';
+    </script>
 
     <p class="project-index-footer-nav">
       <a href="/about/">Background & approach</a>

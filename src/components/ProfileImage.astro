@@ -2,9 +2,10 @@
 interface Props {
   size?: 'sm' | 'md' | 'lg';
   priority?: boolean;
+  class?: string;
 }
 
-const { size = 'md', priority = false } = Astro.props;
+const { size = 'md', priority = false, class: className } = Astro.props;
 
 const sizes = {
   sm: { class: 'profile-photo--sm', width: 112, height: 112 },
@@ -20,7 +21,7 @@ const cfg = sizes[size];
   alt="Jirka Schlesinger"
   width={cfg.width}
   height={cfg.height}
-  class:list={['profile-photo', cfg.class]}
+  class:list={['profile-photo', cfg.class, className]}
   loading={priority ? 'eager' : 'lazy'}
   decoding="async"
   fetchpriority={priority ? 'high' : undefined}

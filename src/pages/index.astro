@@ -1,11 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProfileImage from '../components/ProfileImage.astro';
 import FeaturedProjectCard from '../components/FeaturedProjectCard.astro';
 import { getCollection } from 'astro:content';
 
 const projectsSorted = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-const featuredFallback = projectsSorted.slice(0, 3);
+const featuredFallback = projectsSorted.slice(0, 5);
+const projectCount = projectsSorted.length;
+
+const evidence = [
+  { value: '13+', label: 'Years in UX' },
+  { value: '10', label: 'Years at PwC' },
+  { value: String(projectCount), label: 'Case snapshots' },
+];
+
+const principles = [
+  {
+    title: 'Frame the problem first',
+    detail: 'Slow down early enough to name the real decision before the team commits to a direction.',
+  },
+  {
+    title: 'Make trade-offs explicit',
+    detail: 'Surface constraints, assumptions, and delivery realities while options are still open.',
+  },
+  {
+    title: 'Design for after launch',
+    detail: 'Favour solutions teams can build, govern, and keep using once the first release is behind them.',
+  },
+];
 ---
 
 <BaseLayout
@@ -13,86 +34,139 @@ const featuredFallback = projectsSorted.slice(0, 3);
   description="Ten years at PwC from UX design to lead — complex and AI-enabled products, enterprise delivery, and practical UX leadership."
   path="/"
 >
-  <article class="stack-lg">
-    <header class="intro-block intro-block--split intro-hero">
-      <ProfileImage size="md" priority />
-      <div class="intro-hero__intro">
-        <h1>Jirka Schlesinger</h1>
-        <p class="role-tagline">UX Lead focused on Complex & AI‑Enabled Products</p>
+  <article class="home-page">
+    <section class="home-hero" aria-labelledby="home-heading">
+      <picture class="home-hero__picture" aria-hidden="true">
+        <source
+          media="(max-width: 899px) and (orientation: landscape)"
+          srcset="/images/jiri-schlesinger-hero-mobile-landscape.jpg"
+          width={1024}
+          height={434}
+        />
+        <source
+          media="(max-width: 899px) and (orientation: portrait)"
+          srcset="/images/jiri-schlesinger-hero-portrait.jpg"
+          width={571}
+          height={1024}
+        />
+        <img
+          class="home-hero__background home-hero__background--landscape"
+          src="/images/jiri-schlesinger-hero-landscape.jpg"
+          alt=""
+          width={1024}
+          height={434}
+          decoding="async"
+          fetchpriority="high"
+        />
+      </picture>
+      <div class="home-hero__shade" aria-hidden="true"></div>
+      <div class="home-hero__grid">
+        <div class="home-hero__content">
+          <h1 id="home-heading">From fuzzy briefs to products teams can ship.</h1>
+          <p class="home-hero__tagline">Complex and AI-enabled work in enterprise and regulated environments.</p>
+        </div>
       </div>
-    </header>
+    </section>
 
-    <div class="intro-hero__body">
-      <p class="lede">
-        The past ten years at PwC have taken me from UX designer to UX Lead on complex digital and AI‑enabled products. I help teams align on the problem, make trade‑offs
-        explicit, and move from ambiguity to buildable solutions that stay useful after launch.
-      </p>
-      <p>
-        I am a designer with about twenty years in design and thirteen in UX. I focus on practical outcomes, rapid prototyping when it helps teams learn,
-        and AI‑assisted workflows when they make the work clearer and faster.
-      </p>
-      <p class="intro-closing">
-        If you are working on a complex product and would like to compare notes, <a href="#talk">get in touch</a>.
-      </p>
+    <div class="home-body stack-lg">
+      <section class="home-evidence" aria-label="At a glance">
+        <ul class="home-evidence__list">
+          {
+            evidence.map((item) => (
+              <li class="home-evidence__item">
+                <span class="home-evidence__value">{item.value}</span>
+                <span class="home-evidence__label">{item.label}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <div class="home-intro">
+        <p class="lede">
+          Ten years at PwC took me from UX designer to UX Lead on complex digital and AI-enabled products. I help teams align on the problem, make trade-offs explicit,
+          and move from ambiguity to buildable solutions that stay useful after launch.
+        </p>
+      </div>
+
+      <section class="home-section" aria-labelledby="selected-heading">
+        <div class="home-section__header">
+          <p class="home-section__label">Selected work</p>
+          <h2 id="selected-heading">Case snapshots</h2>
+        </div>
+        <p class="muted">Five projects on each visit. Details stay high level where confidentiality requires it.</p>
+        <div class="home-work-mosaic" id="featured-projects-row">
+          {
+            featuredFallback.map((p, index) => (
+              <FeaturedProjectCard
+                slug={p.slug}
+                title={p.data.title}
+                focus={p.data.focus}
+                variant={index === 0 ? 'feature' : 'standard'}
+              />
+            ))
+          }
+        </div>
+
+        <div id="featured-projects-deck" class="featured-projects-deck" hidden aria-hidden="true">
+          {
+            projectsSorted.map((p) => (
+              <FeaturedProjectCard slug={p.slug} title={p.data.title} focus={p.data.focus} />
+            ))
+          }
+        </div>
+
+        <script is:inline>
+          (function () {
+            var deck = document.getElementById('featured-projects-deck');
+            var row = document.getElementById('featured-projects-row');
+            if (!deck || !row) return;
+            var nodes = deck.querySelectorAll('[data-featured-card]');
+            var cards = Array.prototype.slice.call(nodes);
+            for (var i = cards.length - 1; i > 0; i--) {
+              var j = Math.floor(Math.random() * (i + 1));
+              var tmp = cards[i];
+              cards[i] = cards[j];
+              cards[j] = tmp;
+            }
+            row.innerHTML = '';
+            var count = Math.min(5, cards.length);
+            for (var k = 0; k < count; k++) {
+              var card = cards[k].cloneNode(true);
+              if (k === 0) {
+                card.classList.add('project-spotlight--feature');
+              }
+              row.appendChild(card);
+            }
+          })();
+        </script>
+
+        <p class="section-nav-links">
+          <a class="action-link" href="/projects/">View all projects</a>
+          <span class="muted"> · </span>
+          <a class="action-link" href="/about/">Background, approach & skills</a>
+        </p>
+      </section>
+
+      <section class="home-section" aria-labelledby="approach-heading">
+        <div class="home-section__header">
+          <p class="home-section__label">Approach</p>
+          <h2 id="approach-heading">How I work</h2>
+        </div>
+        <ul class="home-principles">
+          {
+            principles.map((item) => (
+              <li class="home-principles__item">
+                <h3 class="home-principles__title">{item.title}</h3>
+                <p class="home-principles__detail">{item.detail}</p>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="home-section__footer-link">
+          <a class="action-link" href="/about/">Full background and skills</a>
+        </p>
+      </section>
     </div>
-
-    <section aria-labelledby="work-heading">
-      <h2 id="work-heading">What I work on</h2>
-      <p class="muted">
-        UX, product ownership, AI‑enabled experiences, and enterprise delivery — with a focus on clarity, alignment, and work that ships.
-      </p>
-      <ul>
-        <li>Leading UX across discovery, design, and delivery</li>
-        <li>Shaping product and platform UX in complex environments</li>
-        <li>Designing experiences for AI‑driven and data‑heavy tools</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="selected-heading">
-      <h2 id="selected-heading">Selected work</h2>
-      <p class="muted">Case snapshots from discovery through delivery.</p>
-      <div class="featured-projects-row" id="featured-projects-row">
-        {
-          featuredFallback.map((p) => (
-            <FeaturedProjectCard slug={p.slug} title={p.data.title} focus={p.data.focus} />
-          ))
-        }
-      </div>
-
-      <div id="featured-projects-deck" class="featured-projects-deck" hidden aria-hidden="true">
-        {
-          projectsSorted.map((p) => (
-            <FeaturedProjectCard slug={p.slug} title={p.data.title} focus={p.data.focus} />
-          ))
-        }
-      </div>
-
-      <script is:inline>
-        (function () {
-          var deck = document.getElementById('featured-projects-deck');
-          var row = document.getElementById('featured-projects-row');
-          if (!deck || !row) return;
-          var nodes = deck.querySelectorAll('[data-featured-card]');
-          var cards = Array.prototype.slice.call(nodes);
-          for (var i = cards.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var tmp = cards[i];
-            cards[i] = cards[j];
-            cards[j] = tmp;
-          }
-          row.innerHTML = '';
-          var n = Math.min(3, cards.length);
-          for (var k = 0; k < n; k++) {
-            row.appendChild(cards[k].cloneNode(true));
-          }
-        })();
-      </script>
-
-      <p class="section-nav-links">
-        <a class="action-link" href="/projects/">View all projects</a>
-        <span class="muted"> · </span>
-        <a class="action-link" href="/about/">Background, approach & skills</a>
-      </p>
-    </section>
   </article>
 </BaseLayout>

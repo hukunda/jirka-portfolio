@@ -1,5 +1,5 @@
 import activityIcon from 'lucide-static/icons/activity.svg?raw';
-import brainCircuitIcon from 'lucide-static/icons/brain-circuit.svg?raw';
+import fileStackIcon from 'lucide-static/icons/file-stack.svg?raw';
 import briefcaseBusinessIcon from 'lucide-static/icons/briefcase-business.svg?raw';
 import chartColumnIcon from 'lucide-static/icons/chart-column.svg?raw';
 import chartPieIcon from 'lucide-static/icons/chart-pie.svg?raw';
@@ -15,7 +15,7 @@ import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
 const projectIconsBySlug = {
   'enterprise-tax-workflow': landmarkIcon,
   'responsible-ai-toolkit': shieldCheckIcon,
-  'ai-document-data-platforms': brainCircuitIcon,
+  'ai-document-data-platforms': fileStackIcon,
   'enterprise-digital-products': layoutGridIcon,
   'ai-at-pwc': libraryBigIcon,
   'financial-crime-suite': activityIcon,
