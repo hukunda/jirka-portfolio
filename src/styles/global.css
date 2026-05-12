@@ -68,6 +68,41 @@ a:hover {
   color: var(--link-hover);
 }
 
+:where(
+  .site-title a,
+  .nav a,
+  .action-link,
+  main a:not([class]),
+  .contact-line a,
+  .site-colophon a,
+  .breadcrumbs a,
+  .section-nav-links a,
+  .about-page__footer-nav a,
+  .project-index-footer-nav a,
+  .project-detail-footer-links a,
+  .project-pagination__link,
+  .project-pagination__index-link,
+  .skip-link
+):hover,
+:where(
+  .site-title a,
+  .nav a,
+  .action-link,
+  main a:not([class]),
+  .contact-line a,
+  .site-colophon a,
+  .breadcrumbs a,
+  .section-nav-links a,
+  .about-page__footer-nav a,
+  .project-index-footer-nav a,
+  .project-detail-footer-links a,
+  .project-pagination__link,
+  .project-pagination__index-link,
+  .skip-link
+):focus-visible {
+  font-weight: 700;
+}
+
 main a:not([class]) {
   font-weight: 500;
   text-decoration: underline;
@@ -445,6 +480,7 @@ article.prose > section + section > h2:first-child {
 .project-spotlight__link:hover .project-spotlight__title,
 .project-spotlight__link:focus-visible .project-spotlight__title {
   color: var(--link-hover);
+  font-weight: 700;
 }
 
 .project-spotlight__summary {
@@ -494,6 +530,7 @@ article.prose > section + section > h2:first-child {
 .project-index-row:hover .project-index-row__title,
 .project-index-row:focus-visible .project-index-row__title {
   color: var(--link-hover);
+  font-weight: 700;
 }
 
 .project-index-row__summary {
@@ -595,6 +632,7 @@ article.prose > section + section > h2:first-child {
 .project-pagination__link:hover .project-pagination__title,
 .project-pagination__link:focus-visible .project-pagination__title {
   color: var(--link-hover);
+  font-weight: 700;
 }
 
 .project-pagination__label {
@@ -645,6 +683,7 @@ article.prose > section + section > h2:first-child {
 .project-pagination__index-link:hover .project-pagination__index-text,
 .project-pagination__index-link:focus-visible .project-pagination__index-text {
   color: var(--link-hover);
+  font-weight: 700;
 }
 
 .project-pagination__index .project-pagination__label {
