@@ -5,7 +5,7 @@ import FeaturedProjectCard from '../components/FeaturedProjectCard.astro';
 import { getCollection } from 'astro:content';
 
 const projectsSorted = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-const featuredProjects = projectsSorted.slice(0, 3);
+const featuredFallback = projectsSorted.slice(0, 3);
 ---
 
 <BaseLayout
@@ -51,13 +51,42 @@ const featuredProjects = projectsSorted.slice(0, 3);
     <section aria-labelledby="selected-heading">
       <h2 id="selected-heading">Selected work</h2>
       <p class="muted">Case snapshots from discovery through delivery.</p>
-      <div class="featured-projects-row">
+      <div class="featured-projects-row" id="featured-projects-row">
         {
-          featuredProjects.map((p) => (
+          featuredFallback.map((p) => (
             <FeaturedProjectCard slug={p.slug} title={p.data.title} focus={p.data.focus} />
           ))
         }
       </div>
+
+      <div id="featured-projects-deck" class="featured-projects-deck" hidden aria-hidden="true">
+        {
+          projectsSorted.map((p) => (
+            <FeaturedProjectCard slug={p.slug} title={p.data.title} focus={p.data.focus} />
+          ))
+        }
+      </div>
+
+      <script is:inline>
+        (function () {
+          var deck = document.getElementById('featured-projects-deck');
+          var row = document.getElementById('featured-projects-row');
+          if (!deck || !row) return;
+          var nodes = deck.querySelectorAll('[data-featured-card]');
+          var cards = Array.prototype.slice.call(nodes);
+          for (var i = cards.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = cards[i];
+            cards[i] = cards[j];
+            cards[j] = tmp;
+          }
+          row.innerHTML = '';
+          var n = Math.min(3, cards.length);
+          for (var k = 0; k < n; k++) {
+            row.appendChild(cards[k].cloneNode(true));
+          }
+        })();
+      </script>
 
       <p class="section-nav-links">
         <a class="action-link" href="/projects/">View all projects</a>

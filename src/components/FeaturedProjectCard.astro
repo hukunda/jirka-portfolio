@@ -10,7 +10,7 @@ interface Props {
 const { slug, title, focus } = Astro.props;
 ---
 
-<article class="project-spotlight">
+<article class="project-spotlight" data-featured-card>
   <a class="project-spotlight__link" href={`/projects/${slug}/`}>
     <div class="project-spotlight__glyph" aria-hidden="true">
       <ProjectCardIcon slug={slug} />
